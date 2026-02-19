@@ -94,7 +94,7 @@ if (existsSync(clientDist)) {
 // In development, Vite handles client serving via its own dev server + proxy
 
 server.listen(PORT, () => {
-  console.log(`[viralzator] Server running on http://localhost:${PORT}`);
+  console.log(`[viralizator] Server running on http://localhost:${PORT}`);
 });
 
 export { app, server };

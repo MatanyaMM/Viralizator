@@ -4,7 +4,7 @@ import * as schema from './schema.js';
 import { mkdirSync } from 'fs';
 import { dirname } from 'path';
 
-const DB_PATH = './data/viralzator.db';
+const DB_PATH = './data/viralizator.db';
 
 // Ensure the data directory exists
 mkdirSync(dirname(DB_PATH), { recursive: true });

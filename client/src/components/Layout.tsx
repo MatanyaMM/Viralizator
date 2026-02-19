@@ -24,7 +24,7 @@ export default function Layout() {
       <aside className="sidebar">
         <div className="sidebar-header">
           <Zap size={20} className="accent" />
-          <span className="logo-text">VIRALZATOR</span>
+          <span className="logo-text">VIRALIZATOR</span>
         </div>
         <nav className="sidebar-nav">
           {navItems.map((item) => (

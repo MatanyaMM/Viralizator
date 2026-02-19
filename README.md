@@ -1,4 +1,4 @@
-# Viralzator
+# Viralizator
 
 A self-hosted SaaS app that monitors Instagram accounts, detects viral posts, translates them to Hebrew, generates branded carousels, and auto-publishes to destination Instagram accounts.
 
