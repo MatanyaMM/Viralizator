@@ -1,0 +1,34 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Database (contains real data and API keys)
+data/
+
+# Generated images (runtime output)
+public/images/carousels/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Drizzle migrations (auto-generated)
+server/db/migrations/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Claude internal
+.claude/
