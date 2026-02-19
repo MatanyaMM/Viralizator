@@ -175,6 +175,7 @@ async function processPublishJob(job: Job<PublishJobData>): Promise<void> {
 }
 
 function getPublicBaseUrl(): string {
+  if (process.env.PUBLIC_BASE_URL) return process.env.PUBLIC_BASE_URL;
   const setting = db.select().from(schema.settings).where(eq(schema.settings.key, 'public_base_url')).get();
   if (setting) return setting.value;
   // Fallback to localhost (won't work with Meta API in production)

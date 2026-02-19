@@ -18,8 +18,9 @@ interface ApifyPost {
 }
 
 function getToken(): string {
+  if (process.env.APIFY_TOKEN) return process.env.APIFY_TOKEN;
   const setting = db.select().from(schema.settings).where(eq(schema.settings.key, 'apify_token')).get();
-  if (!setting) throw new Error('Apify API token not configured. Set "apify_token" in settings.');
+  if (!setting) throw new Error('Apify API token not configured. Set APIFY_TOKEN env var or "apify_token" in settings.');
   return setting.value;
 }
 

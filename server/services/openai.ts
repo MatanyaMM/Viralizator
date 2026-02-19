@@ -4,9 +4,11 @@ import { eq } from 'drizzle-orm';
 import type { TopicRoutingResult, TranslationResult } from '../../shared/types.js';
 
 function getClient(): OpenAI {
-  const setting = db.select().from(schema.settings).where(eq(schema.settings.key, 'openai_api_key')).get();
-  if (!setting) throw new Error('OpenAI API key not configured. Set "openai_api_key" in settings.');
-  return new OpenAI({ apiKey: setting.value });
+  const apiKey =
+    process.env.OPENAI_API_KEY ||
+    db.select().from(schema.settings).where(eq(schema.settings.key, 'openai_api_key')).get()?.value;
+  if (!apiKey) throw new Error('OpenAI API key not configured. Set OPENAI_API_KEY env var or "openai_api_key" in settings.');
+  return new OpenAI({ apiKey });
 }
 
 // ── Topic Routing ──

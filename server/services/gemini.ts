@@ -3,9 +3,11 @@ import { db, schema } from '../db/index.js';
 import { eq } from 'drizzle-orm';
 
 function getClient(): GoogleGenAI {
-  const setting = db.select().from(schema.settings).where(eq(schema.settings.key, 'gemini_api_key')).get();
-  if (!setting) throw new Error('Gemini API key not configured. Set "gemini_api_key" in settings.');
-  return new GoogleGenAI({ apiKey: setting.value });
+  const apiKey =
+    process.env.GEMINI_API_KEY ||
+    db.select().from(schema.settings).where(eq(schema.settings.key, 'gemini_api_key')).get()?.value;
+  if (!apiKey) throw new Error('Gemini API key not configured. Set GEMINI_API_KEY env var or "gemini_api_key" in settings.');
+  return new GoogleGenAI({ apiKey });
 }
 
 interface SlideGenerationResult {
