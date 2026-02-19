@@ -2,7 +2,7 @@ import express from 'express';
 import { createServer } from 'http';
 import { fileURLToPath } from 'url';
 import { dirname, resolve } from 'path';
-import { existsSync } from 'fs';
+import { existsSync, mkdirSync } from 'fs';
 import sourcesRouter from './routes/sources.js';
 import destinationsRouter from './routes/destinations.js';
 import postsRouter from './routes/posts.js';
@@ -27,6 +27,10 @@ const PROJECT_ROOT = resolve(__dirname, '..');
 const app = express();
 const server = createServer(app);
 const PORT = parseInt(process.env.PORT || '3000', 10);
+
+// Ensure runtime directories exist (needed on fresh deployments)
+mkdirSync(resolve(PROJECT_ROOT, 'data'), { recursive: true });
+mkdirSync(resolve(PROJECT_ROOT, 'public/images/carousels'), { recursive: true });
 
 // Body parsing
 app.use(express.json());
