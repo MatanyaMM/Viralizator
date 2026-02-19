@@ -10,7 +10,8 @@
   ],
   "scripts": {
     "dev": "tsx server/index.ts",
-    "build": "vite build --config client/vite.config.ts && tsc -p server/tsconfig.json",
+    "build": "vite build --config client/vite.config.ts",
+    "start": "node --import tsx/esm server/index.ts",
     "db:push": "drizzle-kit push",
     "db:generate": "drizzle-kit generate",
     "db:studio": "drizzle-kit studio"
